@@ -95,7 +95,7 @@ Bio: Fred J. Hickernell is Professor of Applied Mathematics and Vice Provost for
 \thanksnote{Looking forward to working with you this summer \\
 Slides at  \href{https://speakerdeck.com/fjhickernell/argonne2023maytalk}%
 {\nolinkurl{speakerdeck.com/fjhickernell/argonne2023maytalk}} \\
-Jupyter notebook with computations and figures \href{https://github.com/QMCSoftware/QMCSoftware/blob/develop/demos/talk_paper_demos/Argonne_Talk_2022_May/Argonne_2023_Talk_Figures.ipynb}{\beamerbutton{here}}\quad Visit us at \href{https://qmcpy.org}{\nolinkurl{qmcpy.org}}}
+Jupyter notebook with computations and figures \href{https://github.com/QMCSoftware/QMCSoftware/blob/SURE2023/demos/talk_paper_demos/SURE_2023_Demos/SURE_2023_Kickoff_Talk_Figures.ipynb}{\beamerbutton{here}}\quad Visit us at \href{https://qmcpy.org}{\nolinkurl{qmcpy.org}}}
 
 \event{SURE Kickoff}
 \date[]{ revised \today}
@@ -189,47 +189,6 @@ Gaps and clusters, uneven
 \end{frame}
 
 
-\begin{frame}{Low Discrepancy Sampling aka  Quasi-Monte Carlo\footfullcite{Hic97a}}
-
-	\vspace{-5ex}
-	\hspace*{-2ex}
-	\begin{tabular}{m{0.65\textwidth}m{0.35\textwidth}}
-		\vspace{-4ex}
-		\[
-        \begin{aligned}
-		    \MoveEqLeft{\overbrace{\int_{[0,1]^d} f(\vx) \, \dif \vx}^
-            {\Ex[f(\vX)], \ \vX \sim \cu[0,1]^d} - \frac 1n \sum_{i=0}^n f(\vx_i)
-			= \CONF(f,\{\vx\}_{i=1}^n) \, \DISC(\{\vx\}_{i=1}^n) \, \VAR(f)} \\
-        \only<6>{ \MoveEqLeft{\CONF(f,\{\vx_i\}_{i=1}^n) = \frac{\int_{[0,1]^d} f(\vx) \, \dif \vx - \frac 1n \sum_{i=0}^n f(\vx_i)}{\DISC(\{\vx_i\}_{i=1}^n) \, \VAR(f)}   \quad \text{between } \pm1}}
-         \only<2-5>{\MoveEqLeft{\DISC^2(\{\vx_i\}_{i=1}^n) = \left(\frac{13}{12}\right)^2} \\
-         &
-         - \frac 2n \sum_{i=1}^n \prod_{j=1}^d\left(1 + 0.5\abs{x_{ij} - 0.5} - 0.5(x_{ij}-0.5)^2\right) \\
-         & + \frac{1}{n^2} \sum_{i,k=1}^n \left[ 1 + 0.5\abs{x_{ij} - 0.5} +
-         0.5\abs{x_{kj} - 0.5} - 0.5\abs{x_{ij} - x_{kj}}\right]}
-         \only<1>{\MoveEqLeft{\VAR^2(f)
-          = \int_{[0,1]} \left[\frac{\partial f}{\partial x_1} (x_1, 0.5, \ldots, 0.5)\right]^2 \, \dif x_1 + \cdots }\\
-         & + \int_{[0,1]^{2}} \left[\frac{\partial^2 f}{\partial x_1 \partial x_2} (x_1, x_2,0.5, \ldots, 0.5)\right]^2 \, \dif x_1 \, \dif x_2 + \cdots \\
-         & + \int_{[0,1]^{d}} \left[\frac{\partial^d f}{\partial x_1 \cdots \partial x_d} (\vx)\right]^2 \, \dif \vx
-         }
-		\end{aligned}
-        \]
-		&
-		\centering
-		\only<1-2,6>{\includegraphics[width=0.35\textwidth]{latticeptssingle.eps}}
-		\only<3>{\includegraphics[width=0.35\textwidth]{sobolptssingle.eps}}
-		\only<4>{\includegraphics[width=0.35\textwidth]{haltonptssingle.eps}}
-		\only<5>{\includegraphics[width=0.35\textwidth]{iidptssingle.eps}}
-		\only<2-4,6>{\vspace{-4ex}
-		\[\DISC(\{\vx_i\}_{i=1}^n) = \alert{\Order(n^{-1+\delta})}\]}
-		\only<5>{\vspace{-4ex}
-	\[\DISC(\{\vx_i\}_{i=1}^n) = \alert{\Order(n^{-1/2})}\]}
-	\end{tabular}
-	\vspace{-5ex}
-
-        \only<1>{$\VAR$ is a semi-norm, more smoothness than $\std$, value generally unknown, reduced through transformations}%
-        \only<2>{\vspace{-1ex} $\DISC$ is the norm of the error functional, value known with $\Order(dn^2)$ operations}
-
-\end{frame}
 
 
 
@@ -271,13 +230,13 @@ Gaps and clusters, uneven
 
 \section{Problems}
 
-\begin{frame}{Research Problems for Consideration}
+\begin{frame}{Research Problems for Your Consideration}
     \begin{itemize}
         \item Explore quasi-Monte Carlo aka low discrepancy sampling performance using QMCPy on other uncertainty quantification problems in the UM-Bridge suite \footfullcite{umbridge}
 
         \item Link QMCPy with the finite element solver FEniCSx\footfullcite{LoggEtal_11_2012}
 
-        \item Implement quasi-Monte Carlo Gaussian random fields in 
+        \item Implement quasi-Monte Carlo Gaussian random fields \href{https://github.com/PieterjanRobbe/GaussianRandomFields.jl}{\nolinkurl{github.com/PieterjanRobbe/GaussianRandomFields.jl}} in QMCPy 
 
         \item \{Sou-Cheng insert your problems here\}
         
@@ -287,7 +246,37 @@ Gaps and clusters, uneven
 
 \section{Next Steps}
 
-\begin{frame}{If You Want to Dip Your Toes in a Bit More}
+\begin{frame}{Dip Your Toes in}
+
+\vspace{-5ex}
+Don't worry.  All actions can be undone.  These actions only need to be done once.
+
+\vspace{-2ex}
+\begin{enumerate}
+    \item Go to \href{https://qmcpy.org}{\beamerbutton{\nolinkurl{qmcpy.org}}}.  This is where we introduce and explain our QMCPy library 
+    \begin{enumerate}[a]
+        \item Read the blog \href{https://qmcpy.org/2020/06/25/why_add_q_to_mc/}{\beamerbutton{Why Add Q to MC?}}
+        \item Select the menu item \href{https://github.com/QMCSoftware/QMCSoftware}{\beamerbutton{GitHub}} to go to the GitHub repository for QMCPy
+    \end{enumerate}
+    
+    \item The QMCPy GitHub software, documentation, and demos reside at \href{https://github.com/QMCSoftware/QMCSoftware}{\beamerbutton{this repository}}
+    \begin{enumerate}[a]
+        \item Create a GitHub account if you do not have one
+        \item Optional: you may wish to install a GitHub desktop client like \href{https://desktop.github.com}{\beamerbutton{this}} or \href{https://www.gitkraken.com}{\beamerbutton{that}}
+        \item Scroll down to the \href{https://github.com/QMCSoftware/QMCSoftware/\#readme}{\beamerbutton{README}} 
+        \item Click on the \href{https://github.com/QMCSoftware/QMCSoftware/blob/master/CONTRIBUTING.md}{\beamerbutton{Contributing}}
+    \end{enumerate}
+
+    \item To contribute to QMCPy you need to set up your environment.  While at \href{https://github.com/QMCSoftware/QMCSoftware/blob/master/CONTRIBUTING.md}{\beamerbutton{Contributing}} 
+    \begin{enumerate}[a]
+    \item Open a terminal and set up your programming environment following the instructions.
+    \item Install \href{https://code.visualstudio.com}{\beamerbutton{Visual Studio Code}} or your favorite integrated development environment (IDE)
+    \item In your environment run  \texttt{\alert{pip install jupyterlab}}
+    \item Move to the \alert{SURE2023} branch of QMCPY by typing \texttt{\alert{git checkout SURE2023}}
+    \item Type \texttt{\alert{jupyter-lab}} to start Jupyter Lab
+    \item Run the notebook used to make these figures
+    \end{enumerate}
+\end{enumerate}
     
 \end{frame}
 
