@@ -1,0 +1,8 @@
+10:54:35 From Aleksei Sorokin to Everyone:
+	https://archive.ics.uci.edu/ml/datasets/haberman's+survival
+10:58:45 From Aleksei Sorokin to Everyone:
+	https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html
+11:01:39 From Aleksei Sorokin to Everyone:
+	Precision = TP/(TP+FP), Recall = TP/(TP+FN), Accuracy = (TP+FP)/(TP+FP+TN+FN)
+11:03:55 From Fred Hickernell (Illinois Tech, VPR & AM) to Everyone:
+	Elastic net uses different penalty functions l_2 vs l_1
