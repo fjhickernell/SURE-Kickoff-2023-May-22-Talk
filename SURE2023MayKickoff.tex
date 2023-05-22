@@ -1,4 +1,4 @@
-%Argonne 2023 May 18 Argonne Talk
+%SURE 2023 May 22 Kickoff Talk
 \documentclass[10pt,compress,xcolor={usenames,dvipsnames},aspectratio=169]{beamer}
 %\usepackage[T1]{fontenc}
 %\usepackage{tgadventor} %Font found at https://tug.org/FontCatalogue/
@@ -82,19 +82,21 @@ Bio: Fred J. Hickernell is Professor of Applied Mathematics and Vice Provost for
 
 \renewcommand{\OffTitleLength}{-12ex}
 \setlength{\FJHThankYouMessageOffset}{-8ex}
-\title{Speedy Simulations}
+\title{SUREly Speedy Simulations}
 \author[]{Sou-Cheng Choi and Fred J. Hickernell}
 \institute{Illinois Institute of Technology \\
     Dept Applied Math \quad
-	Ctr Interdisc Scientific Comput \quad Office of Research\\
+	Ctr Interdisc Scientific Comput \quad 
+ $\begin{Bmatrix} \text{SAS} \\ \text{Office of Research} \end{Bmatrix}$\\
  \href{mailto:schoi32@iit.edu}{\url{schoi32@iit.edu}}
 	\\
 	\href{mailto:hickernell@iit.edu}{\url{hickernell@iit.edu}} \qquad
 	\href{https://sites.google.com/iit.edu/fred-j-hickernell}{\url{sites.google.com/iit.edu/fred-j-hickernell}}}
 
 \thanksnote{Looking forward to working with you this summer \\
-Slides at  \href{https://speakerdeck.com/fjhickernell/argonne2023maytalk}%
-{\nolinkurl{speakerdeck.com/fjhickernell/argonne2023maytalk}} \\
+Slides at  \href{https://speakerdeck.com/fjhickernell/sure-kickoff-2023-may-22-talk}%
+{\nolinkurl{speakerdeck.com/fjhickernell/sure-kickoff-2023-may-22-talk}} and \\
+\href{https://www.overleaf.com/9233123434vvgphqsccgfc}{\nolinkurl{www.overleaf.com/9233123434vvgphqsccgfc}} \\
 Jupyter notebook with computations and figures \href{https://github.com/QMCSoftware/QMCSoftware/blob/SURE2023/demos/talk_paper_demos/SURE_2023_Demos/SURE_2023_Kickoff_Talk_Figures.ipynb}{\beamerbutton{here}}\quad Visit us at \href{https://qmcpy.org}{\nolinkurl{qmcpy.org}}}
 
 \event{SURE Kickoff}
@@ -133,15 +135,15 @@ Jupyter notebook with computations and figures \href{https://github.com/QMCSoftw
 		\[
 		\begin{aligned}
 			u(x) & = g(\vZ, x) = \text{beam deflection} \\
-			x &= \text{position} \\
 			& = \text{solution of a differential equation boundary value problem} \\
+			x &= \text{position} \\
 			\vZ & \sim \cu[1,1.2]^3 \quad \text{defines uncertainty in Young's modulus}
                 & = \text{the randomness in the problem}\\
 			\mu(x) &= \text{expected or mean value of the beam deflection} \\
                     & = \Ex[g(\vZ,x)] = \int_{[0,1]^3}  g(\vz,x) \, \dif \vz \approx 
                     \underbrace{\frac 1n \sum_{i=1}^n g(\vZ_i,x)}_{\substack{\text{\alert{sample mean} or }\\ \text{\alert{Monte Carlo estimate}}}}
 			\\
-			& \mu(\text{end}) = 1037  \qquad \text{\alert{How?}}
+			& \mu(\text{end}) = 1037  \qquad \text{\alert{How to choose $\vZ_1, \vZ_2, \ldots$?}}
 		\end{aligned}
 		\]
 		&
@@ -155,11 +157,12 @@ Jupyter notebook with computations and figures \href{https://github.com/QMCSoftw
 
 
 \begin{frame}{Simple vs.\ Quasi-Monte Carlo for the Cantilevered Beam via QMCPy\footfullcite{QMCPy2020a}}
-	\vspace{-16ex}
+	\vspace{-14ex}
 	\begin{tabular}{m{0.63\textwidth}m{0.35\textwidth}}
+ \only<2>{\vspace{-5ex}}
 		\[
 		\begin{aligned}
-				g(\vZ, x) &= \text{beam deflection} \\
+				g(\vZ, x) &= \text{beam deflection from DE solver} \\
 			\only<1>{\vZ & \sim \cu[1,1.2]^3 \quad \text{defines uncertainty} &
 			x &= \text{position} \\}
 			\mu(x) &= \Ex[g(\vZ, x)] \approx 
@@ -172,6 +175,7 @@ Jupyter notebook with computations and figures \href{https://github.com/QMCSoftw
 	\includegraphics<2>[width=0.5\textwidth]{ldparallelbeam.eps}
 		&
 		\centering
+  \vspace{10ex}
 		\includegraphics[width=0.33\textwidth]{cantileveredbeamwords.eps}
 	\end{tabular}
 
@@ -193,7 +197,7 @@ Gaps and clusters, uneven
 
 
 
-\begin{frame}{Low Discrepancy Points Fill Space Better Than IID Points}
+\begin{frame}{Low Discrepancy Points Fill Space More Evenly Than IID Points}
 \vspace{-3.2ex}
 
 \includegraphics[width=\textwidth]{latticeptsseq.eps}
@@ -231,15 +235,23 @@ Gaps and clusters, uneven
 \section{Problems}
 
 \begin{frame}{Research Problems for Your Consideration}
+
+\vspace{-5ex}
     \begin{itemize}
         \item Explore quasi-Monte Carlo aka low discrepancy sampling performance using QMCPy on other uncertainty quantification problems in the UM-Bridge suite \footfullcite{umbridge}
 
-        \item Link QMCPy with the finite element solver FEniCSx\footfullcite{LoggEtal_11_2012}
+        \item Link QMCPy with popular finite element solver \href{https://fenicsproject.org}{\beamerbutton{FEniCSx}}\footfullcite{LoggEtal_11_2012}
 
-        \item Implement quasi-Monte Carlo Gaussian random fields \href{https://github.com/PieterjanRobbe/GaussianRandomFields.jl}{\nolinkurl{github.com/PieterjanRobbe/GaussianRandomFields.jl}} in QMCPy 
+        \item Implement quasi-Monte Carlo Gaussian random fields (in Julia) \href{https://github.com/PieterjanRobbe/GaussianRandomFields.jl}{\nolinkurl{github.com/PieterjanRobbe/GaussianRandomFields.jl}} in QMCPy 
 
-        \item \{Sou-Cheng insert your problems here\}
-        
+        \item  Environment, Sustainability, and Government (ESG) investing using QMC
+        \begin{itemize}
+        \item comparing Sharpe ratio or other ratios (e.g., Traynor ratio) in Markowitz asset allocation model
+        \item incorporating backtest and comparing to benchmark returns e.g., S\&P500 
+        \item parallelization --- important when choosing from a large pool of candidate assets
+         \end{itemize}
+
+        \item (Big) data compression with QMC and deep learning\footfullcite{DICK2021101587}
     \end{itemize}
 \end{frame}
 
@@ -249,17 +261,17 @@ Gaps and clusters, uneven
 \begin{frame}{Dip Your Toes in}
 
 \vspace{-5ex}
-Don't worry.  All actions can be undone.  These actions only need to be done once.
+All actions can be undone.  These actions only need to be done once.
 
 \vspace{-2ex}
 \begin{enumerate}
-    \item Go to \href{https://qmcpy.org}{\beamerbutton{\nolinkurl{qmcpy.org}}}.  This is where we introduce and explain our QMCPy library 
+    \item Go to \href{https://qmcpy.org}{\beamerbutton{\nolinkurl{qmcpy.org}}}, where we introduce and explain our QMCPy library 
     \begin{enumerate}[a]
         \item Read the blog \href{https://qmcpy.org/2020/06/25/why_add_q_to_mc/}{\beamerbutton{Why Add Q to MC?}}
         \item Select the menu item \href{https://github.com/QMCSoftware/QMCSoftware}{\beamerbutton{GitHub}} to go to the GitHub repository for QMCPy
     \end{enumerate}
     
-    \item The QMCPy GitHub software, documentation, and demos reside at \href{https://github.com/QMCSoftware/QMCSoftware}{\beamerbutton{this repository}}
+    \item The QMCPy GitHub software, documentation, and demos reside at \href{https://github.com/QMCSoftware/QMCSoftware}{\beamerbutton{the QMCPy GitHub repository}}
     \begin{enumerate}[a]
         \item Create a GitHub account if you do not have one
         \item Optional: you may wish to install a GitHub desktop client like \href{https://desktop.github.com}{\beamerbutton{this}} or \href{https://www.gitkraken.com}{\beamerbutton{that}}
@@ -274,14 +286,15 @@ Don't worry.  All actions can be undone.  These actions only need to be done onc
     \item In your environment run  \texttt{\alert{pip install jupyterlab}}
     \item Move to the \alert{SURE2023} branch of QMCPY by typing \texttt{\alert{git checkout SURE2023}}
     \item Type \texttt{\alert{jupyter-lab}} to start Jupyter Lab
-    \item Run the notebook used to make these figures
+    \item Run \href{https://github.com/QMCSoftware/QMCSoftware/blob/SURE2023/demos/talk_paper_demos/SURE_2023_Demos/SURE_2023_Kickoff_Talk_Figures.ipynb}{\beamerbutton{the notebook}} used to make the figures for these slides
     \end{enumerate}
+    \item Join our \alert{Speedy Simulations} Slack workspace \href{https://join.slack.com/t/speedyreliabl-dvj5497/shared_invite/zt-1vkvdv69x-VItvAXGnFQ3Wmh1MnF82nw}{\beamerbutton{here}}
 \end{enumerate}
     
 \end{frame}
 
 
-\begin{frame}[allowframebreaks]{References}
+\begin{frame}{References}
 	\printbibliography
 \end{frame}
 
